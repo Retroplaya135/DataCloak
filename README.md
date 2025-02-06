@@ -42,3 +42,5 @@ Run the Service
 ```
 python advanced_threat_detector.py
 ```
+
+The API will be available at: http://localhost:5000
