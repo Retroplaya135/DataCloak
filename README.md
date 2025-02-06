@@ -70,3 +70,32 @@ Response:
   "id": 123
 }
 ```
+
+
+Analyze Event for Anomalies
+
+Endpoint: /api/analyzeMethod: POSTHeaders: { "X-API-KEY": "your_api_key" }
+
+Payload:
+```
+
+{
+  "ip_address": "192.168.1.101",
+  "username": "hacker",
+  "event_type": "login_attempt",
+  "event_value": 5.0,
+  "timestamp": "2025-02-05T12:34:56"
+}
+```
+
+Response:
+
+```
+{
+  "anomaly_score": -0.42,
+  "prediction": "anomaly",
+  "model_last_trained": "2025-02-05T12:30:00"
+}
+```
+
+Check API & Model Status
