@@ -167,3 +167,38 @@ Response:
 ### Can be scaled via Kubernetes, Docker, or serverless platforms.
 
 
+
+Deployment
+
+Deploy on Cloud (Example: AWS, GCP, Azure)
+
+```
+git clone https://github.com/yourusername/advanced-threat-detector.git
+cd advanced-threat-detector
+pip install -r requirements.txt
+export API_KEY="your_secret_api_key"
+export DATABASE_URL="sqlite:///threat_logs.db"
+python advanced_threat_detector.py
+```
+
+# Deploy with Docker
+
+### Create a Dockerfile:
+
+```
+FROM python:3.9
+WORKDIR /app
+COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
+ENV API_KEY=your_secret_api_key
+ENV DATABASE_URL=sqlite:///threat_logs.db
+CMD ["python", "advanced_threat_detector.py"]
+```
+
+### Build and run the container:
+
+```
+docker build -t threat-detector .
+docker run -p 5000:5000 -e API_KEY=your_secret_api_key threat-detector
+
+```
