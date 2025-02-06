@@ -129,5 +129,23 @@ Response:
 ### API provides anomaly scores and predictions (normal or anomaly).
 
 
+# AI Model (Isolation Forest)
+
+### Why Isolation Forest?
+
+### Unsupervised learning: No labeled data required.
+
+### Fast anomaly detection: Works well with cybersecurity event logs.
+
+### Continuously retrains: Learns from real-world attack patterns.
+
+# Feature Engineering
+
+### Converts ip_address and username into hash-based features.
+
+### Uses event timestamps and numerical values for learning.
+
+### Detects deviations in behavior dynamically.
+
 
 
