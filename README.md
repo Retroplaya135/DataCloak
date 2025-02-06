@@ -44,3 +44,29 @@ python advanced_threat_detector.py
 ```
 
 The API will be available at: http://localhost:5000
+
+
+API Endpoints
+
+Submit Log Entry
+
+Endpoint: /api/submit_logMethod: POSTHeaders: { "X-API-KEY": "your_api_key" }
+
+Payload:
+
+```
+{
+  "ip_address": "192.168.1.100",
+  "username": "jdoe",
+  "event_type": "login_attempt",
+  "event_value": 1.0
+}
+```
+
+Response:
+```
+{
+  "status": "success",
+  "id": 123
+}
+```
