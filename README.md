@@ -202,3 +202,40 @@ docker build -t threat-detector .
 docker run -p 5000:5000 -e API_KEY=your_secret_api_key threat-detector
 
 ```
+
+# Deploy with Kubernetes
+
+### Create a deployment.yaml:
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: threat-detector
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: threat-detector
+  template:
+    metadata:
+      labels:
+        app: threat-detector
+    spec:
+      containers:
+      - name: detector
+        image: your-dockerhub/threat-detector:latest
+        env:
+        - name: API_KEY
+          value: "your_secret_api_key"
+        ports:
+        - containerPort: 5000
+```
+
+# Apply the deployment:
+
+```
+kubectl apply -f deployment.yaml
+```
+
+
