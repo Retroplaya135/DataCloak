@@ -99,3 +99,19 @@ Response:
 ```
 
 Check API & Model Status
+
+
+Check API & Model Status
+
+Endpoint: /api/statusMethod: GETHeaders: { "X-API-KEY": "your_api_key" }
+
+Response:
+```
+{
+  "service": "Advanced Threat Detector API",
+  "model_trained": true,
+  "last_training_time": "2025-02-05T12:30:00",
+  "training_interval_sec": 60
+}
+```
+
