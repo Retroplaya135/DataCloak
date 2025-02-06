@@ -19,3 +19,13 @@ Advanced Threat Detector API is a production-ready, AI-powered cybersecurity thr
 #### Background Model Retraining - Learns continuously from incoming event logs.
 
 #### SIEM & Microservices Ready - Easily integrates with existing cybersecurity infrastructure.
+
+
+Installation & Setup
+
+Install Dependencies
+
+'''
+pip install flask sqlalchemy scikit-learn pandas
+'''
+
