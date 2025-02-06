@@ -115,3 +115,19 @@ Response:
 }
 ```
 
+
+# How It Works
+
+#### Logs are submitted via /api/submit_log endpoint.
+
+### Data is stored in the local/SQL database.
+
+### Background AI model retrains every 60 seconds using Isolation Forest.
+
+### Incoming events are analyzed for anomalies via /api/analyze.
+
+### API provides anomaly scores and predictions (normal or anomaly).
+
+
+
+
