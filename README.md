@@ -25,7 +25,14 @@ Installation & Setup
 
 Install Dependencies
 
-'''
+```
 pip install flask sqlalchemy scikit-learn pandas
-'''
+```
 
+Set Up Environment Variables
+
+```
+export API_KEY="your_secret_api_key"
+export DATABASE_URL="sqlite:///threat_logs.db"  # Change to a production DB if needed
+export PORT=5000
+```
