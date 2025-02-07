@@ -25,8 +25,14 @@ Installation & Setup
 
 Install Dependencies
 
+
+V1 main branch
 ```
 pip install flask sqlalchemy scikit-learn pandas
+```
+V2
+```
+pip install flask sqlalchemy pandas scikit-learn apscheduler joblib
 ```
 
 Set Up Environment Variables
