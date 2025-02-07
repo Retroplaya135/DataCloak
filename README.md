@@ -27,6 +27,11 @@ Enhanced background model retraining using a dedicated thread.
 Introduced API key authentication to secure endpoints.
 Added endpoints for submitting logs (/api/submit_log) and analyzing events (/api/analyze).
 
+Model Persistence:
+Integrated model saving and loading using joblib so that the trained Isolation Forest can be reused across restarts.
+Initial Change Logging:
+Logged key events (like new log submissions and training events) using Python’s logging module.
+
 Installation & Setup
 
 Install Dependencies
