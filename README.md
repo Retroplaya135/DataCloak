@@ -38,6 +38,9 @@ Detailed Change Logging & Audit Trails:
 Created dedicated database tables for both model training logs and anomaly detection logs.
 Enhanced structured logging to file with detailed messages (including timestamps, record counts, and error handling).
 
+Admin Endpoints:
+Added endpoints (/api/training_logs and /api/detection_logs) to retrieve a full changelog of model training events and detection events, offering transparency and a “moat” by tracking every change.
+
 Installation & Setup
 
 Install Dependencies
