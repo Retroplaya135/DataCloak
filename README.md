@@ -32,6 +32,12 @@ Integrated model saving and loading using joblib so that the trained Isolation F
 Initial Change Logging:
 Logged key events (like new log submissions and training events) using Python’s logging module.
 
+Robust Scheduling:
+Replaced simple threading with APScheduler for more robust and configurable background retraining.
+Detailed Change Logging & Audit Trails:
+Created dedicated database tables for both model training logs and anomaly detection logs.
+Enhanced structured logging to file with detailed messages (including timestamps, record counts, and error handling).
+
 Installation & Setup
 
 Install Dependencies
