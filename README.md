@@ -306,6 +306,7 @@ Schedules background tasks (periodic retraining jobs).
 #### joblib:
 Model serialization (saving and loading the trained model).
 
+```
                        +----------------------+
                        |     API Client       |
                        +----------------------+
@@ -373,7 +374,7 @@ Model serialization (saving and loading the trained model).
              |   triggers retraining)        |
              +-------------------------------+
 
-
+```
 
 License
 
