@@ -21,6 +21,11 @@ Advanced Threat Detector API is a production-ready, AI-powered cybersecurity thr
 #### SIEM & Microservices Ready - Easily integrates with existing cybersecurity infrastructure.
 
 
+#### – Log Ingestion & Persistence:
+The script uses SQLAlchemy to define and persist three key database tables: one for raw threat logs, one for recording each model retraining event, and one for capturing anomaly detection events. This design provides a full audit trail of both system activity and model evolution.
+
+
+
 #☝️ Release Version 2.0 
 
 ### Improved Background Training & API Endpoints:
