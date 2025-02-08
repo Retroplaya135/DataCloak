@@ -21,20 +21,20 @@ Advanced Threat Detector API is a production-ready, AI-powered cybersecurity thr
 #### SIEM & Microservices Ready - Easily integrates with existing cybersecurity infrastructure.
 
 
-# Version 2.0 
+#☝️ Release Version 2.0 
 
-Improved Background Training & API Endpoints:
+### Improved Background Training & API Endpoints:
 
 Background model retraining using a dedicated thread.
 Introduced API key authentication to secure endpoints.
 Added endpoints for submitting logs (/api/submit_log) and analyzing events (/api/analyze).
 
-Model Persistence:
+### Model Persistence:
 Integrated model saving and loading using joblib so that the trained Isolation Forest can be reused across restarts.
 Initial Change Logging:
 Logged key events (like new log submissions and training events) using Python’s logging module.
 
-Robust Scheduling:
+### Robust Scheduling:
 Replaced simple threading with APScheduler for more robust and configurable background retraining.
 Detailed Change Logging & Audit Trails:
 Created dedicated database tables for both model training logs and anomaly detection logs.
