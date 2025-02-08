@@ -8,23 +8,25 @@ Advanced Threat Detector API is a production-ready, AI-powered cybersecurity thr
 
 ## Features
 
-#### API Key Authentication - Secure API access via X-API-KEY headers.
+#### 🔥 API Key Authentication - Secure API access via X-API-KEY headers.
 
-#### Persistent Logging - Stores cybersecurity events in a SQL database.
+#### 🔥 Persistent Logging - Stores cybersecurity events in a SQL database.
 
-#### AI-Driven Anomaly Detection - Continuously retrains an Isolation Forest model to detect threats dynamically.
+#### 🔥 AI-Driven Anomaly Detection - Continuously retrains an Isolation Forest model to detect threats dynamically.
 
-#### Modular & Scalable - Designed for SaaS deployment and enterprise security integrations.
+#### 🔥 Modular & Scalable - Designed for SaaS deployment and enterprise security integrations.
 
-#### Background Model Retraining - Learns continuously from incoming event logs.
+#### 🔥 Background Model Retraining - Learns continuously from incoming event logs.
 
-#### SIEM & Microservices Ready - Easily integrates with existing cybersecurity infrastructure.
+#### 🔥 SIEM & Microservices Ready - Easily integrates with existing cybersecurity infrastructure.
 
 
 #### – Log Ingestion & Persistence:
 The script uses SQLAlchemy to define and persist three key database tables: one for raw threat logs, one for recording each model retraining event, and one for capturing anomaly detection events. This design provides a full audit trail of both system activity and model evolution.
 
-
+#### Continuous Model Adaptation:
+– Scheduled Retraining with APScheduler:
+Instead of relying on ad hoc background threads, the script employs APScheduler to run the retraining job at configurable intervals. 
 
 #☝️ Release Version 2.0 
 
