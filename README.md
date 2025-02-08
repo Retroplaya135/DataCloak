@@ -306,6 +306,75 @@ Schedules background tasks (periodic retraining jobs).
 #### joblib:
 Model serialization (saving and loading the trained model).
 
+                       +----------------------+
+                       |     API Client       |
+                       +----------------------+
+                                |
+               +----------------+----------------+
+               |                                 |
+         POST /api/submit_log              POST /api/analyze
+               |                                 |
+               v                                 v
++-------------------------------+       +-------------------------------+
+|         Flask API             |       |         Flask API             |
+| (Log Submission & Ingestion)  |       | (Real-time Analysis Endpoint) |
++-------------------------------+       +-------------------------------+
+               |                                 |
+               |                                 |  (Transforms incoming event
+               |                                 |   into numeric features)
+               v                                 v
++-------------------------------+       +-------------------------------+
+|      ThreatLog Table          |       |    Feature Engineering        |
+|   (SQLAlchemy ORM Storage)    |       |         (pandas)              |
++-------------------------------+       +-------------------------------+
+               |                                 |
+               +-----------+        +------------+
+                           |        |
+                           |        v
+                           |  +-------------------------------+
+                           |  | IsolationForest Model         |
+                           |  | (scikit‑learn for anomaly      |
+                           |  |   detection)                  |
+                           |  +-------------------------------+
+                           |                |
+                           |                | Model Scoring &
+                           |                | Prediction
+                           |                v
+                           |  +-------------------------------+
+                           |  | AnomalyDetectionLogs          |
+                           |  | (Logs each detection event)   |
+                           |  +-------------------------------+
+                           |
+                           |   (Data Aggregation for Training)
+                           v
++-----------------------------------------------------+
+|            Data Aggregation & Feature Extraction    |
+|                (get_training_data using pandas)     |
++-----------------------------------------------------+
+                           |
+                           v
++-----------------------------------------------------+
+|          IsolationForest Model Training             |
+|   (Model retraining using aggregated features)      |
+|   - Triggered by APScheduler (Background Scheduler) |
++-----------------------------------------------------+
+                           |
+                           | Save/Load via joblib
+                           v
++-----------------------------------------------------+
+|                 Model Persistence                   |
+|        (ModelTrainingLogs & joblib storage)         |
++-----------------------------------------------------+
+                           ^
+                           |
+             +-------------------------------+
+             |  Background Scheduler         |
+             |  (APScheduler periodically    |
+             |   triggers retraining)        |
+             +-------------------------------+
+
+
+
 License
 
 MIT License - Feel free to use, modify, and distribute.
