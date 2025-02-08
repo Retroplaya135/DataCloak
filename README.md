@@ -21,9 +21,11 @@ Advanced Threat Detector API is a production-ready, AI-powered cybersecurity thr
 #### SIEM & Microservices Ready - Easily integrates with existing cybersecurity infrastructure.
 
 
-#Version 2.0
+# Version 2.0 
+
 Improved Background Training & API Endpoints:
-Enhanced background model retraining using a dedicated thread.
+
+Background model retraining using a dedicated thread.
 Introduced API key authentication to secure endpoints.
 Added endpoints for submitting logs (/api/submit_log) and analyzing events (/api/analyze).
 
