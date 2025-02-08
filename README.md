@@ -21,6 +21,77 @@ Advanced Threat Detector API is a production-ready, AI-powered cybersecurity thr
 #### 🔥 SIEM & Microservices Ready - Easily integrates with existing cybersecurity infrastructure.
 
 
+```
+                       +----------------------+
+                       |     API Client       |
+                       +----------------------+
+                                |
+               +----------------+----------------+
+               |                                 |
+         POST /api/submit_log              POST /api/analyze
+               |                                 |
+               v                                 v
++-------------------------------+       +-------------------------------+
+|         Flask API             |       |         Flask API             |
+| (Log Submission & Ingestion)  |       | (Real-time Analysis Endpoint) |
++-------------------------------+       +-------------------------------+
+               |                                 |
+               |                                 |  (Transforms incoming event
+               |                                 |   into numeric features)
+               v                                 v
++-------------------------------+       +-------------------------------+
+|      ThreatLog Table          |       |    Feature Engineering        |
+|   (SQLAlchemy ORM Storage)    |       |         (pandas)              |
++-------------------------------+       +-------------------------------+
+               |                                 |
+               +-----------+        +------------+
+                           |        |
+                           |        v
+                           |  +-------------------------------+
+                           |  | IsolationForest Model         |
+                           |  | (scikit‑learn for anomaly      |
+                           |  |   detection)                  |
+                           |  +-------------------------------+
+                           |                |
+                           |                | Model Scoring &
+                           |                | Prediction
+                           |                v
+                           |  +-------------------------------+
+                           |  | AnomalyDetectionLogs          |
+                           |  | (Logs each detection event)   |
+                           |  +-------------------------------+
+                           |
+                           |   (Data Aggregation for Training)
+                           v
++-----------------------------------------------------+
+|            Data Aggregation & Feature Extraction    |
+|                (get_training_data using pandas)     |
++-----------------------------------------------------+
+                           |
+                           v
++-----------------------------------------------------+
+|          IsolationForest Model Training             |
+|   (Model retraining using aggregated features)      |
+|   - Triggered by APScheduler (Background Scheduler) |
++-----------------------------------------------------+
+                           |
+                           | Save/Load via joblib
+                           v
++-----------------------------------------------------+
+|                 Model Persistence                   |
+|        (ModelTrainingLogs & joblib storage)         |
++-----------------------------------------------------+
+                           ^
+                           |
+             +-------------------------------+
+             |  Background Scheduler         |
+             |  (APScheduler periodically    |
+             |   triggers retraining)        |
+             +-------------------------------+
+
+```
+
+
 #### – Log Ingestion & Persistence:
 The script uses SQLAlchemy to define and persist three key database tables: one for raw threat logs, one for recording each model retraining event, and one for capturing anomaly detection events. This design provides a full audit trail of both system activity and model evolution.
 
@@ -306,75 +377,6 @@ Schedules background tasks (periodic retraining jobs).
 #### joblib:
 Model serialization (saving and loading the trained model).
 
-```
-                       +----------------------+
-                       |     API Client       |
-                       +----------------------+
-                                |
-               +----------------+----------------+
-               |                                 |
-         POST /api/submit_log              POST /api/analyze
-               |                                 |
-               v                                 v
-+-------------------------------+       +-------------------------------+
-|         Flask API             |       |         Flask API             |
-| (Log Submission & Ingestion)  |       | (Real-time Analysis Endpoint) |
-+-------------------------------+       +-------------------------------+
-               |                                 |
-               |                                 |  (Transforms incoming event
-               |                                 |   into numeric features)
-               v                                 v
-+-------------------------------+       +-------------------------------+
-|      ThreatLog Table          |       |    Feature Engineering        |
-|   (SQLAlchemy ORM Storage)    |       |         (pandas)              |
-+-------------------------------+       +-------------------------------+
-               |                                 |
-               +-----------+        +------------+
-                           |        |
-                           |        v
-                           |  +-------------------------------+
-                           |  | IsolationForest Model         |
-                           |  | (scikit‑learn for anomaly      |
-                           |  |   detection)                  |
-                           |  +-------------------------------+
-                           |                |
-                           |                | Model Scoring &
-                           |                | Prediction
-                           |                v
-                           |  +-------------------------------+
-                           |  | AnomalyDetectionLogs          |
-                           |  | (Logs each detection event)   |
-                           |  +-------------------------------+
-                           |
-                           |   (Data Aggregation for Training)
-                           v
-+-----------------------------------------------------+
-|            Data Aggregation & Feature Extraction    |
-|                (get_training_data using pandas)     |
-+-----------------------------------------------------+
-                           |
-                           v
-+-----------------------------------------------------+
-|          IsolationForest Model Training             |
-|   (Model retraining using aggregated features)      |
-|   - Triggered by APScheduler (Background Scheduler) |
-+-----------------------------------------------------+
-                           |
-                           | Save/Load via joblib
-                           v
-+-----------------------------------------------------+
-|                 Model Persistence                   |
-|        (ModelTrainingLogs & joblib storage)         |
-+-----------------------------------------------------+
-                           ^
-                           |
-             +-------------------------------+
-             |  Background Scheduler         |
-             |  (APScheduler periodically    |
-             |   triggers retraining)        |
-             +-------------------------------+
-
-```
 
 License
 
