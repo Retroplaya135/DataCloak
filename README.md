@@ -286,6 +286,24 @@ spec:
 kubectl apply -f deployment.yaml
 ```
 
+Libraries used:
+
+Minimal Library Descriptions
+
+#### Flask:
+Lightweight web framework for REST API endpoints.
+#### SQLAlchemy:
+ORM for defining models and interacting with the database.
+#### pandas:
+Data manipulation and feature engineering (DataFrame operations).
+#### scikit‑learn:
+Machine learning library; here, the IsolationForest algorithm is used for anomaly detection.
+scikit‑learn Site
+#### APScheduler:
+Schedules background tasks (periodic retraining jobs).
+#### joblib:
+Model serialization (saving and loading the trained model).
+
 License
 
 MIT License - Feel free to use, modify, and distribute.
