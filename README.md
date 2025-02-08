@@ -43,21 +43,22 @@ Enhanced structured logging to file with detailed messages (including timestamps
 Admin Endpoints:
 Added endpoints (/api/training_logs and /api/detection_logs) to retrieve a full changelog of model training events and detection events, offering transparency and a “moat” by tracking every change.
 
-Installation & Setup
 
-Install Dependencies
+# Installation & Setup
+
+### Install Dependencies
 
 
-V1 main branch
+### V1 main branch
 ```
 pip install flask sqlalchemy scikit-learn pandas
 ```
-V2
+### V2
 ```
 pip install flask sqlalchemy pandas scikit-learn apscheduler joblib
 ```
 
-Set Up Environment Variables
+#### Set Up Environment Variables
 
 ```
 export API_KEY="your_secret_api_key"
@@ -65,7 +66,7 @@ export DATABASE_URL="sqlite:///threat_logs.db"  # Change to a production DB if n
 export PORT=5000
 ```
 
-Run the Service
+#### Run the Service
 
 ```
 python advanced_threat_detector.py
