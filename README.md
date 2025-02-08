@@ -51,6 +51,10 @@ Enhanced structured logging to file with detailed messages (including timestamps
 – joblib Integration:
 By saving the trained model to disk and reloading it on startup, the solution minimizes downtime and avoids retraining from scratch after every restart. 
 
+#### Advanced Logging & Traceability:
+– Structured Python Logging:
+Detailed logging is set up both to a file (for system audits) and into database tables (for operational analytics).
+
 Admin Endpoints:
 Added endpoints (/api/training_logs and /api/detection_logs) to retrieve a full changelog of model training events and detection events, offering transparency and a “moat” by tracking every change.
 
