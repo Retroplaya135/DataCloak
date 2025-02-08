@@ -30,6 +30,8 @@ Instead of relying on ad hoc background threads, the script employs APScheduler 
 
 #☝️ Release Version 2.0 
 
+Additional endpoints (/api/training_logs and /api/detection_logs) allow administrators to retrieve recent training and detection events.
+
 ### Improved Background Training & API Endpoints:
 
 Background model retraining using a dedicated thread.
