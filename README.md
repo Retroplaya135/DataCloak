@@ -55,6 +55,10 @@ By saving the trained model to disk and reloading it on startup, the solution mi
 – Structured Python Logging:
 Detailed logging is set up both to a file (for system audits) and into database tables (for operational analytics).
 
+#### Security via API Key Enforcement:
+– Endpoint Protection:
+All API endpoints are secured with a simple API key mechanism, ensuring that only authorized clients can submit logs or request model status.
+
 Admin Endpoints:
 Added endpoints (/api/training_logs and /api/detection_logs) to retrieve a full changelog of model training events and detection events, offering transparency and a “moat” by tracking every change.
 
