@@ -421,6 +421,7 @@ Response:
 
 # Deployment & Security Architecture
 
+```
 +-------------------------------------------------+
 |             Secure API Access                   |
 |-------------------------------------------------|
@@ -437,7 +438,7 @@ Response:
 | 🔹 Kubernetes Deployment                        |
 | 🔹 Cloud (AWS, GCP, Azure)                      |
 +--------------------------------------------------+
-
+```
 
 Deployment
 
