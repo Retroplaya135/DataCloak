@@ -127,6 +127,8 @@ The script uses SQLAlchemy to define and persist three key database tables: one 
 – Scheduled Retraining with APScheduler:
 Instead of relying on ad hoc background threads, the script employs APScheduler to run the retraining job at configurable intervals. 
 
+# API Flow
+
 ```
 +----------------------+
 |    API Client       |
