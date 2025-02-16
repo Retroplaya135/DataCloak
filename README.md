@@ -127,6 +127,31 @@ The script uses SQLAlchemy to define and persist three key database tables: one 
 – Scheduled Retraining with APScheduler:
 Instead of relying on ad hoc background threads, the script employs APScheduler to run the retraining job at configurable intervals. 
 
+```
++----------------------+
+|    API Client       |
+| (SIEM / Microservices)|
++----------------------+
+        |
+        v
++-------------------------------+
+|        Flask API              |
+|  (Threat Log & Analysis)      |
++-------------------------------+
+        |                 |
+        |                 |
+        v                 v
++----------------+  +----------------+
+|   SQL Logs     |  |  Isolation     |
+| (Event Storage)|  |  Forest Model  |
++----------------+  +----------------+
+        |
+        v
++-----------------------------+
+|  Model Training & Retraining |
++-----------------------------+
+```
+
 #☝️ Release Version 2.0 
 
 Additional endpoints (/api/training_logs and /api/detection_logs) allow administrators to retrieve recent training and detection events.
