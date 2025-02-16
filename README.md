@@ -191,6 +191,36 @@ Admin Endpoints:
 Added endpoints (/api/training_logs and /api/detection_logs) to retrieve a full changelog of model training events and detection events, offering transparency and a “moat” by tracking every change.
 
 
+# Database Structure
+
+```
++-------------------------------+
+|         ThreatLog Table       |
+|-------------------------------|
+| id  | ip_address | username   |
+|-------------------------------|
+| 101 | 192.168.1.1| admin      |
+| 102 | 10.0.0.2   | user123    |
++-------------------------------+
+
++----------------------------------+
+|  AnomalyDetectionLogs Table     |
+|----------------------------------|
+| id  | event_id | anomaly_score  |
+|----------------------------------|
+| 201 | 101      |  -0.42         |
+| 202 | 102      |  0.80          |
++----------------------------------+
+
++--------------------------------------+
+|  ModelTrainingLogs Table            |
+|--------------------------------------|
+| id  | last_training_time             |
+|--------------------------------------|
+| 301 | 2025-02-05T12:30:00            |
++--------------------------------------+
+```
+
 # Installation & Setup
 
 ### Install Dependencies
