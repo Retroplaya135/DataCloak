@@ -6,6 +6,31 @@ Threat Detector API
 
 Advanced Threat Detector API is a production-ready, AI-powered cybersecurity threat detection system. It continuously learns from incoming log events, detects anomalies using an unsupervised Isolation Forest model, and provides API endpoints for seamless integration into SIEMs, microservices, and enterprise security platforms.
 
+```
++-----------------------+
+|   Advanced Threat    |
+|    Detector API      |
++-----------------------+
+        |
+        v
++------------------------+
+|    API Endpoints       |
+|    (Flask API)         |
++------------------------+
+        |
+        v
++-------------------------+
+| SQL Database (Logs &    |
+| Model Training Data)    |
++-------------------------+
+        |
+        v
++-------------------------+
+|  AI Model (Isolation   |
+|  Forest for Anomalies) |
++-------------------------+
+```
+
 ## Features
 
 #### 🔥 API Key Authentication - Secure API access via X-API-KEY headers.
