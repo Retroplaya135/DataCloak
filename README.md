@@ -419,6 +419,24 @@ Response:
 
 ### Can be scaled via Kubernetes, Docker, or serverless platforms.
 
+# Deployment & Security Architecture
+
++-------------------------------------------------+
+|             Secure API Access                   |
+|-------------------------------------------------|
+| 🔒 API Key Authentication (X-API-KEY)           |
+| 🔒 Logging of all API Calls                     |
+| 🔒 Structured Logging for Traceability         |
++-------------------------------------------------+
+
++--------------------------------------------------+
+|          Deployment Options                      |
+|--------------------------------------------------|
+| 🔹 Local Flask App                               |
+| 🔹 Docker Deployment                            |
+| 🔹 Kubernetes Deployment                        |
+| 🔹 Cloud (AWS, GCP, Azure)                      |
++--------------------------------------------------+
 
 
 Deployment
